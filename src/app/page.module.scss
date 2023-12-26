@@ -1,0 +1,10 @@
+@use './styles/mixins' as *;
+
+.center {
+  height: calc(100vh - 24px);
+  width: 100%;
+  display: grid;
+  place-content: center;
+  place-items: center;
+  gap: 1rem;
+}
