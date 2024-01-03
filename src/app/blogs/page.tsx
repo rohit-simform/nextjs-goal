@@ -1,7 +1,19 @@
-import React from 'react'
+import { options } from '../api/auth/[...nextauth]/options'
+import { getServerSession } from 'next-auth/next'
+import { redirect } from 'next/navigation'
 
-function page() {
-  return <div>Blogs</div>
+export default async function ServerPage() {
+  const session = await getServerSession(options)
+
+  console.log(session)
+
+  if (!session) {
+    redirect('/api/auth/signin?callbackUrl=/blogs')
+  }
+
+  return (
+    <section className="flex flex-col gap-6">
+      <p>Blog</p>
+    </section>
+  )
 }
-
-export default page
